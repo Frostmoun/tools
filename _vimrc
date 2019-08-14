@@ -9,9 +9,9 @@ set mouse=a
 set encoding=utf-8
 let &t_ut=''
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set list
 set listchars=tab:?\ ,trail:?
 set scrolloff=5
@@ -41,7 +41,7 @@ colorscheme snazzy
 set background=dark
 set guioptions-=m
 set guioptions-=T
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 180)   "Ëá™Âä®ÈÄèÊòé
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 180)   "◊‘∂ØÕ∏√˜
 "--search
 set hlsearch
 set incsearch
@@ -102,7 +102,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
 Plug 'w0rp/ale'
 
 " Auto Complete
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " Undo Tree
 Plug 'mbbill/undotree/'
@@ -182,7 +182,7 @@ let g:mkdp_preview_options = {
 let g:mkdp_markdown_css = ''
 let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
-let g:mkdp_page_title = '„Äå${name}„Äç'
+let g:mkdp_page_title = '°∏${name}°π'
 "--keymap
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4i
 autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -200,9 +200,18 @@ autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,l --------<Enter>
+
+inoremap [ []<ESC>i
+inoremap < <><ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap ( ()<ESC>i
+inoremap { {<CR>}<ESC>O<TAB>
 "----------markdown----------e"
 
-"--------- Compile function----------s"
+
+
+"--------- compile function----------s"
 map r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
@@ -225,9 +234,30 @@ func! CompileRunGcc()
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
   elseif &filetype == 'vimwiki'
-    exec "MarkdownPreview"
+    exec "markdownpreview"
   endif
 endfunc
-
 "--------- Compile function----------e"
-
+"---------nerdtree----------s"
+map tt :NERDTreeToggle<CR>
+let nerdtreeshowlinenumbers=1
+let nerdtreeautocenter=1
+let NERDTreeShowBookmarks=1
+let NERDTreeMapOpenExpl = ""
+let NERDTreeMapUpdir = ""
+let NERDTreeMapUpdirKeepOpen = "l"
+let NERDTreeMapOpenSplit = ""
+let NERDTreeOpenVSplit = ""
+let NERDTreeMapActivateNode = "h"
+let NERDTreeMapOpenInTab = "o"
+let NERDTreeMapPreview = ""
+let NERDTreeMapCloseDir = "n"
+let NERDTreeMapChangeRoot = "y"
+"---------nerdtree----------e"
+"---------nerdtree-git----------s"
+set shell=sh
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Unmerged"  : "®T",
+    \ "Unknown"   : "?"
+    \ }
+"---------nerdtree-git----------e"
